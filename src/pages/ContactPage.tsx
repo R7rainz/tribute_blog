@@ -25,7 +25,6 @@ const ContactPage: React.FC = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitMessage({
@@ -41,7 +40,6 @@ const ContactPage: React.FC = () => {
         message: "",
       })
 
-      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitMessage(null)
       }, 5000)

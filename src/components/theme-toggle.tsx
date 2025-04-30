@@ -12,7 +12,7 @@ export function ThemeToggle() {
   const { setTheme } = useTheme()
 
   return (
-    <div className="relative"> {/* ✅ Ensures positioning works */}
+    <div className="relative">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-none">

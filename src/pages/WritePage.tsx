@@ -45,9 +45,7 @@ const WritePage: React.FC = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate adding a new article
     setTimeout(() => {
-      // In a real app, you would send this to an API
       const newArticle: Article = {
         ...formData,
         id: (articlesData.length + 1).toString(),
@@ -55,10 +53,8 @@ const WritePage: React.FC = () => {
 
       console.log("New article created:", newArticle)
 
-      // Show success message
       alert("Your article has been published successfully!")
 
-      // Navigate to home page
       navigate("/")
 
       setIsSubmitting(false)

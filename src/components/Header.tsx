@@ -13,79 +13,64 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path
 
   return (
-    <header className="border-b sticky top-0 z-40 w-full bg-background/95 backdrop-blur">
-      <div className="container py-4 grid grid-cols-3 items-center">
-        {/* Left - Logo */}
-        <div className="justify-self-start">
-          <Link to="/" className="text-xl font-bold">
-            Tribute Stories
-          </Link>
-        </div>
+    <header className="bg-black text-white shadow-lg sticky top-0 z-50 w-full border-b border-gray-800">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-bold text-white">
+          Tribute Stories
+        </Link>
 
-        {/* Center - Desktop Navigation */}
-        <nav className="hidden md:flex justify-center space-x-8">
-          {[
-            { path: "/", label: "Home" },
-            { path: "/about", label: "About me" },
-            { path: "/categories", label: "Categories" },
-            { path: "/contact", label: "Contact" },
-          ].map(({ path, label }) => (
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-8 items-center">
+          {["/", "/about", "/categories", "/contact"].map((path) => (
             <Link
               key={path}
               to={path}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                isActive(path) ? "text-primary" : "text-foreground"
+                "hover:text-gray-300 transition-colors text-sm font-medium",
+                isActive(path) ? "text-primary underline underline-offset-4" : "text-white"
               )}
             >
-              {label}
+              {path === "/" ? "Home" : path.replace("/", "").replace(/\b\w/g, c => c.toUpperCase())}
             </Link>
           ))}
           <Link
             to="/write"
             className={cn(
-              "text-sm font-medium transition-colors hover:text-primary flex items-center",
-              isActive("/write") ? "text-primary" : "text-foreground"
+              "flex items-center hover:text-gray-300 transition-colors text-sm font-medium",
+              isActive("/write") ? "text-primary underline underline-offset-4" : "text-white"
             )}
           >
             <PenLine size={16} className="mr-1" />
             Write
           </Link>
+          <ThemeToggle />
         </nav>
 
-        {/* Right - Theme Toggle & Mobile Menu */}
-        <div className="justify-self-end flex items-center space-x-2">
+        {/* Mobile Toggle */}
+        <div className="md:hidden flex items-center space-x-2">
           <ThemeToggle />
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle menu">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
-          </div>
+          <Button variant="ghost" size="icon" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-background z-50 md:hidden pt-16">
-          <nav className="container flex flex-col space-y-4 mt-8">
-            {[
-              { path: "/", label: "Home" },
-              { path: "/about", label: "About me" },
-              { path: "/categories", label: "Categories" },
-              { path: "/contact", label: "Contact" },
-              { path: "/write", label: "Write", icon: <PenLine size={16} className="mr-2" /> },
-            ].map(({ path, label, icon }) => (
+        <div className="md:hidden bg-black text-white px-4 pb-6">
+          <nav className="flex flex-col space-y-4 mt-4">
+            {["/", "/about", "/categories", "/contact", "/write"].map((path) => (
               <Link
                 key={path}
                 to={path}
                 className={cn(
-                  "text-lg font-medium transition-colors hover:text-primary p-2 flex items-center",
-                  isActive(path) ? "text-primary bg-secondary" : "text-foreground"
+                  "text-base font-medium py-2 px-3 rounded-md transition-colors",
+                  isActive(path) ? "bg-gray-800 text-primary" : "hover:bg-gray-700 text-white"
                 )}
                 onClick={toggleMenu}
               >
-                {icon}
-                {label}
+                {path === "/" ? "Home" : path.replace("/", "").replace(/\b\w/g, c => c.toUpperCase())}
               </Link>
             ))}
           </nav>

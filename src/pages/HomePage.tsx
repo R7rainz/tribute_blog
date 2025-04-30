@@ -17,18 +17,14 @@ const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("")
 
   useEffect(() => {
-    // Load articles
     setArticles(articlesData as Article[])
 
-    // Set featured articles (first 3)
     setFeaturedArticles((articlesData as Article[]).slice(0, 3))
-
-    // Extract unique categories
+    //getting unique cat
     const uniqueCategories = ["All", ...Array.from(new Set((articlesData as Article[]).map((article) => article.category)))]
     setCategories(uniqueCategories)
   }, [])
 
-  // Filter articles based on search term and selected category
   const filteredArticles = articles.filter((article) => {
     const matchesSearch =
       article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -48,19 +44,18 @@ const HomePage: React.FC = () => {
         <Carousel items={featuredArticles} />
       </section>
 
-      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Articles and Categories */}
         <div className="lg:col-span-2 space-y-12">
-          {/* Search Bar */}
           <div className="mb-8">
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <SearchBar 
+              searchTerm={searchTerm} 
+              setSearchTerm={setSearchTerm} 
+              theme="light" 
+            />
           </div>
-
-          {/* Categories Section */}
           <section>
             <h2 className="text-2xl font-bold mb-6 text-foreground">Explore by Category</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <CategoryCard
                   key={category}
@@ -71,8 +66,6 @@ const HomePage: React.FC = () => {
               ))}
             </div>
           </section>
-
-          {/* Recent Articles Section */}
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-foreground">Recent Articles</h2>
@@ -96,8 +89,6 @@ const HomePage: React.FC = () => {
             )}
           </section>
         </div>
-
-        {/* Sidebar */}
         <div className="lg:col-span-1">
           <Sidebar />
         </div>

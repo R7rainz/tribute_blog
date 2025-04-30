@@ -10,11 +10,10 @@ const CategoriesPage: React.FC = () => {
   const [articlesByCategory, setArticlesByCategory] = useState<Record<string, Article[]>>({})
 
   useEffect(() => {
-    // Extract unique categories
+    //get unique categories
     const uniqueCategories = Array.from(new Set((articlesData as Article[]).map((article) => article.category)))
     setCategories(uniqueCategories)
 
-    // Group articles by category
     const groupedArticles: Record<string, Article[]> = {}
     uniqueCategories.forEach((category) => {
       groupedArticles[category] = (articlesData as Article[]).filter((article) => article.category === category)

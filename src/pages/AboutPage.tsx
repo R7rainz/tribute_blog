@@ -18,7 +18,7 @@ const AboutPage: React.FC = () => {
             <div className="space-y-2 text-gray-800 dark:text-gray-100">
               <div className="flex items-center">
                 <Mail size={16} className="mr-2 text-gray-600 dark:text-gray-400" />
-                <span>jessica.hansen@example.com</span>
+                <span>ronakkamboj26@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={16} className="mr-2 text-gray-600 dark:text-gray-400" />
@@ -27,7 +27,7 @@ const AboutPage: React.FC = () => {
               <div className="flex items-center">
                 <LinkIcon size={16} className="mr-2 text-gray-600 dark:text-gray-400" />
                 <a href="#" className="text-gray-800 hover:text-white dark:text-gray-100 dark:hover:text-gray-300">
-                  www.jessicahansen.com
+                  bento.me/rainz
                 </a>
               </div>
             </div>
@@ -40,7 +40,7 @@ const AboutPage: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Biography</h2>
         <div className="space-y-4 text-gray-800 dark:text-gray-100">
           <p>
-            Hello! I'm Jessica, a passionate traveler, writer, and photographer based in Tokyo, Japan. For the past
+            Hello! I'm Ronak, a passionate traveler, writer, and photographer based in Tokyo, Japan. For the past
             decade, I've been exploring the world and documenting my experiences through stories, photographs, and
             personal reflections.
           </p>
