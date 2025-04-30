@@ -1,54 +1,52 @@
-# React + TypeScript + Vite
+# 📝 tribute_blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **mini-blog website** project that simulates a modern blogging platform. The site features sections for top blog posts, category-based browsing, and more-offering users an engaging way to explore curated content.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Project Description
 
-## Expanding the ESLint configuration
+**tribute_blog** is a web application designed to showcase the core features of a full-fledged blog platform. Users can:
+- Browse **top blog posts**
+- Explore articles grouped by **categories**
+- Enjoy a clean, user-friendly interface
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project is ideal for learning and demonstrating web development fundamentals, including content organization and dynamic rendering.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🚀 Setup Instructions
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/your-username/tribute_blog.git
+cd tribute_blog
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+**2. Install dependencies**
+```bash
+pnpm install
 ```
+*Or use `yarn install` if you prefer Yarn.*
+
+**3. Start the development server**
+```bash
+pnpm run dev
+```
+
+---
+
+## ✨ Features Implemented
+
+- **Display of top blog posts** on the homepage
+- **Category-based browsing** of blog content
+- **Responsive and clean UI**
+- **Easy navigation** between sections
+- **Modular code structure** for scalability
+
+---
+## 🌐 Live Deployed Link
+
+[🔗 View the live project here](https://tribute-blog-sand.vercel.app/)
+
+---
