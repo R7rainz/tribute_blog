@@ -14,7 +14,7 @@ const Carousel = ({ items }: CarouselProps) => {
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
-  const touchStartX = useRef<number>(0); // Defining touch start reference here to avoid conditional hooks
+  const touchStartX = useRef<number>(0); 
 
   const goToNext = () => {
     setPrevIndex(currentIndex);
@@ -28,7 +28,6 @@ const Carousel = ({ items }: CarouselProps) => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
   };
 
-  // Function to start automatic sliding
   const startAutoSlide = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
 
@@ -37,7 +36,6 @@ const Carousel = ({ items }: CarouselProps) => {
     }, 5000);
   };
 
-  // Initial setup for auto-sliding
   useEffect(() => {
     if (!items || items.length === 0) return;
     startAutoSlide();
@@ -47,14 +45,12 @@ const Carousel = ({ items }: CarouselProps) => {
     };
   }, [items]);
 
-  // Handle pausing when hovering
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => {
     setIsPaused(false);
     startAutoSlide();
   };
 
-  // Clear and restart timer when isPaused changes
   useEffect(() => {
     if (isPaused && intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -64,12 +60,10 @@ const Carousel = ({ items }: CarouselProps) => {
     }
   }, [isPaused]);
 
-  // If no items, return nothing
   if (!items || items.length === 0) {
     return null;
   }
 
-  // Handler for touch events
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     setIsPaused(true);
@@ -79,7 +73,6 @@ const Carousel = ({ items }: CarouselProps) => {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX.current - touchEndX;
 
-    // Threshold for swipe detection
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
         goToNext();
@@ -124,7 +117,6 @@ const Carousel = ({ items }: CarouselProps) => {
         }}
       />
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50" />
 
       {/* Content */}
@@ -142,7 +134,6 @@ const Carousel = ({ items }: CarouselProps) => {
         </div>
       </div>
 
-      {/* Left and right transparent click areas for navigation */}
       <div
         className="absolute left-0 top-0 w-1/5 h-full cursor-pointer z-10 opacity-0"
         onClick={goToPrevious}
@@ -154,7 +145,6 @@ const Carousel = ({ items }: CarouselProps) => {
         aria-label="Next slide"
       />
 
-      {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {items.map((_, index) => (
           <button

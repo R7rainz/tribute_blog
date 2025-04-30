@@ -88,7 +88,6 @@ body {
   }
 }
 
-/* Base Element Styling with Clean Spacing */
 @layer base {
   * {
     @apply border-border;
